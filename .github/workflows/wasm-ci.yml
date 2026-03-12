@@ -31,7 +31,7 @@ jobs:
           name: build-artifacts
       - uses: oven-sh/setup-bun@v2
       - run: bun install --ignore-scripts
-      - run: bunx nuxt prepare .playground
+      - run: ./node_modules/.bin/nuxt prepare .playground
       - run: bun run lint
 
   test:
