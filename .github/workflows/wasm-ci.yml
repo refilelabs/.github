@@ -20,6 +20,7 @@ jobs:
           name: build-artifacts
           path: |
             wasm/pkg
+            .playground/.nuxt
 
   lint:
     runs-on: ubuntu-latest
@@ -31,7 +32,6 @@ jobs:
           name: build-artifacts
       - uses: oven-sh/setup-bun@v2
       - run: bun install --ignore-scripts
-      - run: ./node_modules/.bin/nuxt prepare .playground
       - run: bun run lint
 
   test:
