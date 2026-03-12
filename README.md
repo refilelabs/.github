@@ -1,53 +1,44 @@
 # re;file labs
 
-Welcome to the **re;file labs** GitHub organization! We specialize in creating privacy-focused, browser-based file utilities that leverage the power of WebAssembly (WASM) to offer high-performance and secure tools for handling a wide range of file-related tasks.
+**Browser-based file tools that respect your privacy.** All processing runs locally in your browser using WebAssembly — your files never leave your device, and no account is required.
 
-## 🌟 Our Mission
+## Tools
 
-At **re;file labs**, we believe in the power of tools that are:
-- **Private**: Your files are never uploaded to a server. All processing happens directly in your browser, ensuring your data stays with you.
-- **Efficient**: By using WASM, we deliver the performance of native applications directly in your web browser.
-- **User-Friendly**: We strive to create intuitive, seamless experiences that make complex file operations accessible to everyone.
+### [Image Tools](https://refilelabs.com/image)
+Convert, compress, resize, and edit images entirely in the browser. Supports JPEG, PNG, WebP, AVIF, TGA, QOI, and more. View and remove EXIF metadata without uploading a single file.
 
-## 🚀 Key Projects
+### [Document Tools](https://refilelabs.com/document)
+Compress, decrypt, reorder pages, and edit PDF files. Extract embedded images from PDFs. Everything runs locally.
 
-### 1. [**re;file labs website**](https://refilelabs.com)
-A multi-functional utility platform where users can handle all kinds of file operations directly in their browser. Here's a glimpse of what our website offers:
-- **Image Conversion**: Convert images to and from formats like JPEG, PNG, WebP, and SVG.
-- **Metadata Editing**: Modify metadata for images and documents while keeping everything local.
-- **Image Editing**: Resize, crop, and tweak images effortlessly.
-- **PDF Management**: Extract text from PDFs, edit PDF content, and more.
+### [Blog](https://refilelabs.com/blog)
+Guides and deep dives on image formats, metadata, PDF handling, and browser-based file processing.
 
-### 2. [**Image Tools**](https://refilelabs.com/image)
-Our image tools are designed for all your visual needs. Easily compress, edit, and view image metadata, convert between various formats (including SVG), and perform advanced edits—all directly in your browser.
+## How It Works
 
-### 3. [**Document Utilities**](https://refilelabs.com/document)
-Our document tools cover a wide range of functionalities, from extracting images and text to editing PDFs and modifying document metadata. Manage and manipulate documents with ease, securely and without server-side processing.
+The platform is built as a set of composable [Nuxt layers](https://nuxt.com/docs/getting-started/layers). Each layer ships its own pages, components, and composables. The image and document layers additionally include a Rust library compiled to WebAssembly that handles all the heavy lifting.
 
-## 🔧 Tech Stack
+Published npm packages:
 
-- **WebAssembly (WASM)**: High-performance code execution in the browser for fast and secure file operations.
-- **Nuxt**: A powerful framework for building modern, responsive, and accessible frontend applications.
-- **Rust**: Utilized within our WASM utilities for safety, performance, and reliability.
-- **Zig**: Leveraged for interoperability with existing C libraries, such as `libwebp`, to extend our image processing capabilities.
+- [`@refilelabs/image`](https://www.npmjs.com/package/@refilelabs/image) — image conversion, compression, resizing, and metadata
 
-## 💡 Why WASM?
+## Repositories
 
-WebAssembly allows us to bridge the gap between native desktop applications and the web. By combining **Rust** for safety and performance with **Zig** for seamless interoperability with existing C libraries, we can:
-- Execute operations quickly without compromising user privacy.
-- Build tools that are lightweight, powerful, and capable of handling complex file tasks.
-- Offer a seamless cross-platform experience with a modern, responsive frontend powered by **Nuxt**.
+| Repo | Description |
+|------|-------------|
+| [base](https://github.com/refilelabs/base) | Nuxt layer — shared UI components, layout, and utilities used by all other layers |
+| [image](https://github.com/refilelabs/image) | Nuxt layer + `@refilelabs/image` WASM library — image processing in Rust |
+| [document](https://github.com/refilelabs/document) | Nuxt layer + `@refilelabs/document` WASM library — PDF processing in Rust |
 
+## Tech Stack
 
-## 📚 Documentation & Resources
+| Layer | Technology |
+|-------|-----------|
+| Processing | Rust, WebAssembly (wasm-pack) |
+| Frontend | Nuxt 4, Vue 3, TypeScript |
+| Styling | Tailwind CSS 4, Nuxt UI |
+| Hosting | Cloudflare Pages |
+| Analytics | Swetrix (privacy-first, no cookies) |
 
-- [Official Website](https://refilelabs.com)
-- [re;file labs Blog](https://refilelabs.com/blog) (Coming Soon)
+## Privacy
 
-## 💬 Community & Support
-
-We’re always eager to hear feedback, suggestions, and new ideas! Feel free to reach out or contribute!
-
-## 🤝 Contributing
-
-We welcome contributions! If you're interested in helping build the future of file management, check out our [Contribution Guide](https://github.com/refilelabs/contribute) and see where you can get involved.
+No uploads. No accounts. No data leaves your machine. Processing is handled entirely by WebAssembly running in your browser.
