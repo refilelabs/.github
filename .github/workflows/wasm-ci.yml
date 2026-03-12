@@ -20,7 +20,6 @@ jobs:
           name: build-artifacts
           path: |
             wasm/pkg
-            node_modules
 
   lint:
     runs-on: ubuntu-latest
@@ -31,6 +30,8 @@ jobs:
         with:
           name: build-artifacts
       - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - run: bun run dev:prepare
       - run: bun run lint
 
   test:
