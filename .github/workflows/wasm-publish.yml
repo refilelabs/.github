@@ -1,25 +1,27 @@
 name: WASM Publish
 on:
   workflow_call:
-    secrets:
-      NPM_TOKEN:
-        required: true
-      CARGO_TOKEN:
-        required: true
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
       - uses: oven-sh/setup-bun@v2
       - name: Install wasm-pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - run: bun install
+      - uses: rust-lang/crates-io-auth-action@v1
+        id: auth
       - run: bun run publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_TOKEN }}
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
