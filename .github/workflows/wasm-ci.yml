@@ -31,7 +31,7 @@ jobs:
           name: build-artifacts
       - uses: oven-sh/setup-bun@v2
       - run: bun install --ignore-scripts
-      - run: bun run dev:prepare
+      # - run: bun run dev:prepare
       - run: bun run lint
 
   test:
