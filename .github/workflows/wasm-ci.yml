@@ -18,9 +18,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: |
-            wasm/pkg
-            .playground/.nuxt
+          path: wasm/pkg
 
   lint:
     runs-on: ubuntu-latest
@@ -31,7 +29,9 @@ jobs:
         with:
           name: build-artifacts
       - uses: oven-sh/setup-bun@v2
-      - run: bun install --ignore-scripts
+      - run: bun install
+        env:
+          SKIP_WASM_BUILD: '1'
       - run: bun run lint
 
   test:
