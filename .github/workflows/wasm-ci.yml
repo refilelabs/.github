@@ -28,11 +28,10 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+          path: wasm/pkg
       - uses: oven-sh/setup-bun@v2
-      - run: bun install
-        env:
-          SKIP_WASM_BUILD: '1'
-      - run: cat package.json && bun run --list
+      - run: bun install --ignore-scripts
+      - run: bun run dev:prepare
       - run: bun run lint
 
   test:
