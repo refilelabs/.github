@@ -19,7 +19,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - name: Install wasm-pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-      - run: bun install
+      - run: bun install --ignore-scripts
       - uses: rust-lang/crates-io-auth-action@v1
         id: auth
       - run: bun run publish
