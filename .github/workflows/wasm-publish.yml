@@ -47,7 +47,7 @@ jobs:
           REPO="${{ github.event.repository.name }}"
           VERSION="${GITHUB_REF_NAME#v}"
           {
-            echo "[![npm](https://npmx.dev/api/registry/badge/version/@refilelabs/${REPO}/v/${VERSION})](https://npmx.dev/package/@refilelabs/${REPO}/v/${VERSION}) [![crates.io](https://img.shields.io/badge/crates.io-v${VERSION}-orange?logo=rust)](https://crates.io/crates/refilelabs-${REPO}/${VERSION})"
+            echo "[![npm](https://npmx.dev/api/registry/badge/version/@refilelabs/${REPO}/v/${VERSION}?label=npm)](https://npmx.dev/package/@refilelabs/${REPO}/v/${VERSION}) [![crates.io](https://img.shields.io/badge/crates.io-v${VERSION}-orange?logo=rust)](https://crates.io/crates/refilelabs-${REPO}/${VERSION})"
             echo ""
             echo "---"
             echo ""
